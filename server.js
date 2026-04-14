@@ -100,10 +100,11 @@ async function sendStart(chatId) {
 `🚀 Crypto Watchlist Global
 
 Premium includes:
-• Daily BTC/ETH market updates
-• Altcoin watchlists
-• Support & resistance zones
-• Setup ideas and risk notes
+High-probability trade setups based on pure price action, market structure, and liquidity — no noise, no guessing.
+
+📊 Intraday & swing setups
+⚡️ Real-time market reactions
+🎯 Clear entries, stops, and targets
 
 Price: ⭐ ${PRICE_STARS} Stars / 30 days
 
