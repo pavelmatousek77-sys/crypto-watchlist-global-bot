@@ -1,0 +1,13 @@
+{
+  "name": "crypto-watchlist-global-stars-bot",
+  "version": "1.0.0",
+  "description": "Telegram Stars Mini App and Bot for Crypto Watchlist Global",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
