@@ -11,7 +11,7 @@ const CHANNEL_ID = process.env.CHANNEL_ID; // private channel usually: -10012345
 const PUBLIC_URL = process.env.PUBLIC_URL; // e.g. https://your-app.onrender.com
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || "change-me";
 const PRICE_STARS = Number(process.env.PRICE_STARS || 999);
-const PRODUCT_TITLE = "Premium Access";
+const PRODUCT_TITLE = " Access";
 const PRODUCT_DESCRIPTION = "30 days access to Crypto Watchlist Global Premium.";
 const SUBSCRIPTION_PERIOD = 2592000; // 30 days, required value for Telegram Stars subscriptions
 
@@ -76,7 +76,7 @@ function readBody(req) {
 }
 
 async function createInvoiceLink(userId) {
-  const payload = `premium:${userId}:${Date.now()}:${crypto.randomBytes(4).toString("hex")}`;
+  const payload = `:${userId}:${Date.now()}:${crypto.randomBytes(4).toString("hex")}`;
   return await tg("createInvoiceLink", {
     title: PRODUCT_TITLE,
     description: PRODUCT_DESCRIPTION,
@@ -89,7 +89,6 @@ async function createInvoiceLink(userId) {
 }
 
 async function sendStart(chatId) {
-  const appUrl = `${PUBLIC_URL}/app`;
   await tg("sendMessage", {
     chat_id: chatId,
     text:
@@ -104,10 +103,9 @@ Premium includes:
 Price: ⭐ ${PRICE_STARS} Stars / 30 days
 
 Educational content only. Not financial advice.`,
- reply_markup: {
+reply_markup: {
   inline_keyboard: [
-    [{ text: "Open Premium Shop", web_app: { url: appUrl } }],
-    [{ text: "Buy Premium Access", callback_data: "buy_premium" }]
+    [{ text: "🔥 Get Premium Access", callback_data: "buy_premium" }]
   ]
 }
   });
@@ -117,7 +115,7 @@ async function sendInvoiceButton(chatId, userId) {
   const invoiceLink = await createInvoiceLink(userId);
   await tg("sendMessage", {
     chat_id: chatId,
-    text: `⭐ Premium Access\n\nPrice: ${PRICE_STARS} Stars / 30 days\n\nTap below to subscribe.`,
+    text: `⭐  Access\n\nPrice: ${PRICE_STARS} Stars / 30 days\n\nTap below to subscribe.`,
     reply_markup: {
       inline_keyboard: [[{ text: `Pay ⭐ ${PRICE_STARS}`, url: invoiceLink }]]
     }
@@ -169,7 +167,7 @@ async function handleSuccessfulPayment(message) {
     text:
 `✅ Payment received.
 
-Your Premium access is active.
+Your  access is active.
 
 Join here:
 ${invite.invite_link}
@@ -190,7 +188,7 @@ async function handleUpdate(update) {
   if (update.callback_query) {
     const cq = update.callback_query;
     await tg("answerCallbackQuery", { callback_query_id: cq.id });
-    if (cq.data === "buy_premium") {
+    if (cq.data === "buy_") {
       await sendInvoiceButton(cq.message.chat.id, cq.from.id);
     }
     return;
@@ -226,7 +224,7 @@ async function handleUpdate(update) {
 
   await tg("sendMessage", {
     chat_id: msg.chat.id,
-    text: "Use /start or /buy to get Premium Access."
+    text: "Use /start or /buy to get  Access."
   });
 }
 
@@ -282,7 +280,7 @@ const miniAppHtml = `<!doctype html>
 <body>
   <main class="card">
     <h1>Crypto Watchlist Global</h1>
-    <p>Premium crypto market analysis for active traders.</p>
+    <p> crypto market analysis for active traders.</p>
     <ul>
       <li>Daily BTC/ETH updates</li>
       <li>Altcoin watchlists</li>
@@ -290,7 +288,7 @@ const miniAppHtml = `<!doctype html>
       <li>Setup ideas and risk notes</li>
     </ul>
     <div class="price">⭐ ${PRICE_STARS} Stars / 30 days</div>
-    <button id="buy">Get Premium Access</button>
+    <button id="buy">Get  Access</button>
     <div class="status" id="status"></div>
     <div class="note">Educational content only. Not financial advice.</div>
   </main>
