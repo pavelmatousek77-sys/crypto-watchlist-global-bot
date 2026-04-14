@@ -104,12 +104,12 @@ Premium includes:
 Price: ⭐ ${PRICE_STARS} Stars / 30 days
 
 Educational content only. Not financial advice.`,
-    reply_markup: {
-      inline_keyboard: [
-        [{ text: "Open Premium Shop", web_app: { url: appUrl } }],
-        [{ text: "Buy Premium Access", callback_data: "buy_premium" }]
-      ]
-    }
+ reply_markup: {
+  inline_keyboard: [
+    [{ text: "Open Premium Shop", web_app: { url: appUrl } }],
+    [{ text: "Buy Premium Access", callback_data: "buy_premium" }]
+  ]
+}
   });
 }
 
